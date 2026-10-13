@@ -33,6 +33,19 @@ if (!companyHtml.includes('src="/brand/nekurama-line-art-mark.jpeg"')) {
   throw new Error('Nekurama company page is missing its line-art brand mark.');
 }
 
+const nameEggMatch = companyHtml.match(/<details class="name-egg">([\s\S]*?)<\/details>/);
+if (!nameEggMatch || /<details class="name-egg"[^>]*\bopen\b/.test(companyHtml)) {
+  throw new Error('Nekurama name-origin Easter egg must exist and start collapsed.');
+}
+if (!nameEggMatch[1].includes('<summary aria-label="Reveal the story behind the Nekurama name">')
+  || !nameEggMatch[1].includes('Watashi wa nekura na seikaku desu')
+  || !nameEggMatch[1].includes('personal inspirations behind Nekurama')) {
+  throw new Error('Nekurama name-origin Easter egg is missing its accessible trigger or approved story.');
+}
+if (/Watashi wa nekura|Nine-Tails fox|curious cat/i.test(companyHtml.split('<head>')[1]?.split('</head>')[0] ?? '')) {
+  throw new Error('Nekurama name-origin Easter egg must stay out of page metadata.');
+}
+
 const markSource = readFileSync(path.join(repositoryDirectory, 'apps', 'sdlc', 'site', 'brand-assets', 'nekurama-line-art-mark.jpeg'));
 const markCopyPath = path.join(outputDirectory, 'brand', 'nekurama-line-art-mark.jpeg');
 const markCopy = readFileSync(markCopyPath);

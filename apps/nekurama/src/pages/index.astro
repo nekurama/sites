@@ -23,7 +23,20 @@ import SiteLayout from '../layouts/SiteLayout.astro';
         <a class="button" href="/products/">Explore our products <span aria-hidden="true">↘</span></a>
       </div>
       <figure class="hero-art">
-        <img src="/brand/nekurama-line-art-mark.jpeg" alt="" width="1254" height="1254" fetchpriority="high" />
+        <details class="name-egg">
+          <summary aria-label="Reveal the story behind the Nekurama name">
+            <img src="/brand/nekurama-line-art-mark.jpeg" alt="" width="1254" height="1254" fetchpriority="high" />
+            <span class="name-egg-hint" aria-hidden="true">Look closer</span>
+          </summary>
+          <div class="name-egg-story">
+            <p class="eyebrow">A name with a few threads</p>
+            <h2>Three ideas, one name.</h2>
+            <p><strong>Ne Kurama</strong> — my Nine-Tails fox inspiration from Naruto.</p>
+            <p><strong>Neku Rama</strong> — a curious cat alongside Lord Rama, from Indian history.</p>
+            <p><strong>Nekura + Manoj</strong> — “Watashi wa nekura na seikaku desu” (“I have a gloomy/introverted personality”), joined with my name, Manoj.</p>
+            <p class="name-egg-note">These are personal inspirations behind Nekurama, not a formal etymology.</p>
+          </div>
+        </details>
         <figcaption><strong>Curiosity opens the way.</strong><span>Thoughtful work gives ideas shape.</span></figcaption>
       </figure>
     </section>
