@@ -50,7 +50,17 @@ The target is one GitHub Pages site at `nekurama.com`, serving the combined outp
 2. `nekurama.com/products/babai/`
 3. `nekurama.com/ideology/sdlc/`
 
-`pnpm build` produces the combined static site under root `dist`; `pnpm validate:site` checks its expected pages, BABAI paths/assets, and unchanged SDLC copy. CI runs both checks but does not publish the output. Do not add deployment workflows, Pages settings, custom domains, or DNS changes as part of this implementation. Future release and cutover planning remains in [issue #2](https://github.com/nekurama/sites/issues/2).
+`pnpm build` produces the combined static site under root `dist`; `pnpm validate:site` checks its expected pages, BABAI paths/assets, and unchanged SDLC copy. Pull requests build and validate the output without publishing. The `Deploy GitHub Pages` workflow deploys successful builds from `main`; manual runs on other branches validate and package but do not deploy.
+
+### Approved release and DNS cutover
+
+- Repository: public `nekurama/sites`; GitHub Pages publishes the root `dist` artifact from the Actions workflow.
+- Primary hostname: `nekurama.com`, configured as the GitHub Pages custom domain. `www.nekurama.com` points to the organization's GitHub Pages host so GitHub can redirect it to the apex.
+- Apex DNS records: four GitHub Pages A records: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, and `185.199.111.153`.
+- `www` DNS record: CNAME to `nekurama.github.io`.
+- Preserve Google Workspace MX, SPF and verification TXT records. Leave existing BABAI and SDLC subdomain records and deployments unchanged.
+- Rollback: restore the apex and `www` web records from the pre-cutover DNS snapshot. Keep mail and verification records intact. The Pages deployment can be disabled by reverting the publishing workflow and changing the Pages source to disabled in repository settings.
+- DNS propagation can take up to 24 hours; confirm authoritative and public resolution before enabling HTTPS enforcement.
 
 ## Open decisions
 
