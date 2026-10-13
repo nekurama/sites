@@ -8,7 +8,8 @@
     "dev:babai": "pnpm --filter @nekurama/babai-site dev --host 0.0.0.0",
     "build:nekurama": "pnpm --filter @nekurama/nekurama-site build",
     "build:babai": "pnpm --filter @nekurama/babai-site build",
-    "build": "pnpm build:nekurama && pnpm build:babai",
-    "validate:sdlc": "node scripts/validate-sdlc.mjs"
+    "build": "node scripts/build.mjs",
+    "validate:sdlc": "node scripts/validate-sdlc.mjs",
+    "validate:site": "node scripts/validate-site.mjs"
   }
 }

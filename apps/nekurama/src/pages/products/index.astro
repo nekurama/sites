@@ -1,0 +1,49 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+---
+
+<SiteLayout
+  title="Products — Nekurama"
+  description="Explore products being created at Nekurama."
+>
+  <header class="wrap topbar">
+    <a class="wordmark" href="/" aria-label="Nekurama home" translate="no">NEKURAMA</a>
+    <nav aria-label="Main navigation">
+      <a href="/">Company</a>
+      <a href="/products/" aria-current="page">Products</a>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">Made at Nekurama</p>
+        <h1 id="hero-title">Products, made with purpose.</h1>
+        <p class="lede">Explore products shaped by the ideas we believe are worth pursuing.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="portfolio-title">
+      <div class="section-heading">
+        <p class="eyebrow">Our portfolio</p>
+        <div>
+          <h2 id="portfolio-title">Explore our products.</h2>
+          <p>Each product has its own story, purpose, and place to begin.</p>
+        </div>
+      </div>
+      <article class="product-card">
+        <div>
+          <p class="eyebrow">Business operations</p>
+          <h3>BABAI</h3>
+          <p>A business operating platform built around WhatsApp, connecting customer conversations with the work that follows.</p>
+          <p class="product-link"><a class="text-link" href="/products/babai/">Discover BABAI <span aria-hidden="true">↗</span></a></p>
+        </div>
+        <div class="product-mark" aria-hidden="true">B.</div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner"><span translate="no">NEKURAMA</span><a class="text-link" href="/">About the company</a></div>
+  </footer>
+</SiteLayout>

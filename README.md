@@ -21,23 +21,25 @@ Install the workspace dependencies with `pnpm install`.
 - `pnpm build:babai`
 - `pnpm validate:sdlc`
 
-## Build validation
+## Combined site build
 
 | Site | Source | Validation and expected output |
 | --- | --- | --- |
-| Nekurama | `apps/nekurama` | `pnpm build:nekurama` creates the static site in `apps/nekurama/dist`. |
-| BABAI | `apps/babai` | `pnpm build:babai` creates the static site in `apps/babai/dist`. |
-| SDLC | `apps/sdlc/site` | `pnpm validate:sdlc` checks `apps/sdlc/site/index.html` and its referenced local image. The preserved HTML, CSS, and JavaScript source is served directly; there is no separate build output. |
+| Nekurama | `apps/nekurama` | `/` in the combined output. |
+| BABAI | `apps/babai` | `/products/babai/` in the combined output; Astro asset URLs use the same base path. |
+| SDLC | `apps/sdlc/site` | `/ideology/sdlc/`; source files are copied byte-for-byte with their relative assets. |
 
-GitHub Actions runs the two Astro builds independently and validates the SDLC static source on pull requests and pushes to `main`. It does not publish or upload site artifacts.
+`pnpm build` assembles all three sites under root `dist`. `pnpm validate:site` checks the expected pages, BABAI's path-based assets and navigation, and byte-for-byte SDLC source preservation. The individual Astro builds remain available as `pnpm build:nekurama` and `pnpm build:babai`; each writes to its app's `dist` directory. `pnpm validate:sdlc` validates the SDLC source independently.
 
-The SDLC page can be previewed by serving `apps/sdlc/site` as a static directory.
+GitHub Actions builds and validates the combined output on pull requests and pushes to `main`. It does not publish or upload site artifacts.
+
+The combined output can be previewed by serving root `dist` as a static directory.
 
 ## Hosting status
 
-GitHub Pages is the selected host. The three custom domains need isolated Pages site configurations. The exact monorepo-to-Pages deployment flow is tracked in [issue #2](https://github.com/nekurama/sites/issues/2).
+The target is one GitHub Pages site at `nekurama.com`, with Nekurama at `/`, BABAI at `/products/babai/`, and SDLC at `/ideology/sdlc/`.
 
-There is deliberately no deployment workflow in this repository yet. The existing SDLC deployment remains in its current repository. No custom domain or DNS changes are included in this source setup.
+There is deliberately no deployment workflow in this repository. The future Pages release and domain cutover are tracked in [issue #2](https://github.com/nekurama/sites/issues/2). No Pages settings, custom domains, DNS, publication, or live-site migration are included in this source setup.
 
 ## Content boundary
 

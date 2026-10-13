@@ -2,11 +2,12 @@
 
 ## Audience and hierarchy
 
-Most visitors are expected to go to the BABAI product site. It is the primary public explanation of what BABAI is designed to offer. The Nekurama site is a brief parent-company page that establishes the relationship and points to BABAI.
+Most visitors are expected to go to a product page. Nekurama's company page introduces the company's motivation and long-term vision, then points visitors to its product index. Product details belong on their respective pages.
 
 ```text
-NEKURAMA (parent company)
-└── BABAI (first product)
+NEKURAMA (company)
+└── Products
+    └── BABAI (first product)
 
 SDLC (company-wide working guide)
 ```
@@ -17,16 +18,20 @@ The source for all public sites, including SDLC, lives in this repository. Exist
 
 - Nekurama and BABAI: Astro-generated static HTML. Use React only for a component that needs client-side interaction.
 - SDLC: preserve its current standalone HTML, JavaScript, CSS, and local asset structure.
-- Keep each site's build independent so it can be deployed to its own custom-domain Pages site.
+- Assemble one static output with Nekurama at `/`, BABAI at `/products/babai/`, and SDLC at `/ideology/sdlc/`.
+- Build BABAI with `/products/babai/` as its base path so generated assets resolve and its navigation links back to Nekurama at `/`.
 - Do not add tracking, forms, signup capture, or third-party embeds without an approved purpose and data-handling path.
 
 ## Page content
 
 ### Nekurama
 
-- State that Nekurama is the parent company and BABAI is its first product.
-- Give visitors a direct path to BABAI.
-- Leave mission, portfolio claims, founder biographies, and public contact details out until approved.
+- Use the approved Warm Editorial visual direction.
+- Keep the company page product-neutral. Its CTA is “Explore our products” and links to `/products/`.
+- Express passion meeting innovation through structured engineering, India's engineering pride, and the long-term aspiration to make ventures across fields building blocks toward a smart environment in harmony with nature.
+- Treat the cross-sector vision as an aspiration, not a claim that Nekurama currently operates across those fields.
+- The `/products/` index introduces the portfolio and links to individual product pages.
+- The name-origin story remains internal until separately approved for public use.
 
 ### BABAI
 
@@ -39,21 +44,21 @@ The source for all public sites, including SDLC, lives in this repository. Exist
 
 ## Hosting plan
 
-GitHub Pages remains the selected provider. Each custom domain needs an independent Pages site configuration. The source monorepo should build isolated static outputs for:
+The target is one GitHub Pages site at `nekurama.com`, serving the combined output at:
 
-1. `nekurama.com`
-2. `babai.nekurama.com`
-3. `sdlc.nekurama.com`
+1. `nekurama.com/`
+2. `nekurama.com/products/babai/`
+3. `nekurama.com/ideology/sdlc/`
 
-The Pages destination-repository and workflow design is not finalized. Resolve that in [issue #2](https://github.com/nekurama/sites/issues/2), including build path filters, preview handling, scoped deployment credentials, rollback, and the SDLC cutover sequence. Do not enable deployments or alter DNS as part of this initial implementation.
+`pnpm build` produces the combined static site under root `dist`; `pnpm validate:site` checks its expected pages, BABAI paths/assets, and unchanged SDLC copy. CI runs both checks but does not publish the output. Do not add deployment workflows, Pages settings, custom domains, or DNS changes as part of this implementation. Future release and cutover planning remains in [issue #2](https://github.com/nekurama/sites/issues/2).
 
 ## Open decisions
 
-- Review the visual direction using the local preview before treating it as the final brand treatment.
+- Decide whether to explain the personal name-origin story publicly or keep its references as background inspiration.
 - Confirm a future visitor action and destination if the BABAI site needs more than informational navigation.
 - Confirm public contact and legal/privacy destinations before adding them.
 - Complete brand/trademark and public-asset review before selecting logo candidates.
-- Approve the deployment topology and a separate release/cutover before changing any live domain.
+- Approve a separate release/cutover before publishing or changing any live domain.
 
 ## Source of content truth
 
@@ -63,4 +68,3 @@ The Pages destination-repository and workflow design is not finalized. Resolve t
 - `Bulb/docs/products/babai/product-definition.md`
 - `Bulb/docs/products/babai/thesis-and-positioning.md`
 - `Bulb/docs/products/babai/experience-and-channels.md`
-
