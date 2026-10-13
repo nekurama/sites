@@ -40,7 +40,7 @@ h1 { max-width: 700px; margin-bottom: 1.5rem; font-size: clamp(3.35rem, 7.3vw, 6
 .button { display: inline-flex; align-items: center; justify-content: center; gap: .8rem; min-height: 48px; padding: .8rem 1.15rem; border: 1px solid var(--accent-strong); border-radius: 4px; background: var(--accent-strong); color: #fffaf4; font-weight: 700; text-decoration: none; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease; }
 .button:hover { transform: translateY(-1px); background: var(--ink); border-color: var(--ink); }
 .hero-art { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 440px; margin: 0; padding: 2rem 1.25rem 1.5rem; overflow: hidden; border: 1px solid #49382e; border-radius: 48% 48% 5px 5px; background: #211c19; color: #fffaf4; text-align: center; }
-.hero-art img { display: block; width: min(84%, 320px); height: auto; aspect-ratio: 1; object-fit: contain; }
+.hero-art img { display: block; width: min(84%, 320px); height: auto; aspect-ratio: 1; object-fit: contain; background: transparent; }
 .name-egg { width: 100%; }
 .name-egg summary { position: relative; display: grid; justify-items: center; cursor: pointer; list-style: none; }
 .name-egg summary::-webkit-details-marker { display: none; }
