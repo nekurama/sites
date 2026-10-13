@@ -18,10 +18,27 @@ for (const page of pages) {
 }
 
 const companyHtml = readFileSync(path.join(outputDirectory, 'index.html'), 'utf8');
+const productsHtml = readFileSync(path.join(outputDirectory, 'products', 'index.html'), 'utf8');
 const babaiHtml = readFileSync(path.join(outputDirectory, 'products', 'babai', 'index.html'), 'utf8');
 
-if (!companyHtml.includes('href="/products/babai/"')) {
-  throw new Error('Nekurama page is missing its BABAI path link.');
+if (!companyHtml.includes('Explore our products') || !companyHtml.includes('href="/products/"')) {
+  throw new Error('Nekurama page is missing its product-neutral products link.');
+}
+
+if (/babai/i.test(companyHtml)) {
+  throw new Error('Nekurama company page must not mention BABAI.');
+}
+
+if (!productsHtml.includes('href="/products/babai/"')) {
+  throw new Error('Nekurama products page is missing its BABAI path link.');
+}
+
+if (!companyHtml.includes('href="/favicon.svg"') || !babaiHtml.includes('href="/favicon.svg"')) {
+  throw new Error('Company and BABAI pages must reference the Nekurama favicon.');
+}
+
+if (!statSync(path.join(outputDirectory, 'favicon.svg'), { throwIfNoEntry: false })?.isFile()) {
+  throw new Error('Nekurama favicon is missing from combined output.');
 }
 
 if (!babaiHtml.includes('href="/"')) {
