@@ -1,0 +1,14 @@
+{
+  "name": "@nekurama/sites",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "scripts": {
+    "dev:nekurama": "pnpm --filter @nekurama/nekurama-site dev --host 0.0.0.0",
+    "dev:babai": "pnpm --filter @nekurama/babai-site dev --host 0.0.0.0",
+    "build:nekurama": "pnpm --filter @nekurama/nekurama-site build",
+    "build:babai": "pnpm --filter @nekurama/babai-site build",
+    "build": "pnpm build:nekurama && pnpm build:babai"
+  }
+}
+

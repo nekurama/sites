@@ -1,0 +1,95 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+
+<SiteLayout
+  title="BABAI — Run your business without leaving WhatsApp"
+  description="BABAI is a business operating platform built around WhatsApp, designed to turn customer conversations into business workflows."
+>
+  <header class="wrap topbar">
+    <a class="brand-lockup" href="#top" aria-label="BABAI home">
+      <span class="brand-symbol" aria-hidden="true">B.</span>
+      <span><span class="brand-name">BABAI</span><span class="product-tag">A NEKURAMA PRODUCT</span></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#workflow">How it fits together</a>
+      <a href="#focus">Initial focus</a>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">Business operations, around WhatsApp</p>
+        <h1 id="hero-title">Run your business without leaving WhatsApp.</h1>
+        <p class="lede">BABAI is a business operating platform built around WhatsApp. It is designed to turn customer conversations into the work that follows: orders, restaurant operations, and fulfillment.</p>
+        <div class="actions">
+          <a class="button" href="#workflow">See how it fits together <span aria-hidden="true">↓</span></a>
+          <a class="button secondary" href="#channels">WhatsApp + web</a>
+        </div>
+      </div>
+      <div class="workflow-visual" role="img" aria-label="Illustration of a customer conversation becoming a structured pickup order and restaurant task">
+        <div class="visual-top"><span><span class="live-dot"></span>Conversation to operation</span><span>01 / 03</span></div>
+        <div class="flow-line" aria-hidden="true"></div>
+        <div class="chat-card first" aria-hidden="true">
+          <div class="chat-head"><span class="avatar">C</span><span>Customer conversation</span></div>
+          <p>“Can I order two masala dosas for pickup?”</p>
+          <span class="message-chip">Menu context · pickup</span>
+        </div>
+        <div class="chat-card second" aria-hidden="true">
+          <div class="chat-head"><span class="avatar">B</span><span>Structured order</span></div>
+          <p>2 × Masala dosa<br />Pickup · awaiting confirmation</p>
+          <span class="message-chip">Ready for the restaurant</span>
+        </div>
+        <div class="flow-stamp" aria-hidden="true"><strong>Human in control</strong>Review and take over when needed</div>
+      </div>
+    </section>
+
+    <section class="section" id="workflow" aria-labelledby="workflow-title">
+      <div class="section-heading">
+        <p class="eyebrow">The operating flow</p>
+        <div>
+          <h2 id="workflow-title">One conversation. A coordinated next step.</h2>
+          <p>BABAI is designed to connect customer intent with the business actions needed to complete an order. The flow below describes the product direction, not a claim that every integration is available today.</p>
+        </div>
+      </div>
+      <div class="steps" aria-label="Intended BABAI workflow">
+        <article class="step"><h3>Conversation</h3><p>Understand the customer's question or request in the business context.</p></article>
+        <article class="step"><h3>Menu</h3><p>Use the restaurant's catalog and availability as the reference.</p></article>
+        <article class="step"><h3>Pickup order</h3><p>Shape the request into an order the business can review.</p></article>
+        <article class="step"><h3>Restaurant work</h3><p>Accept, prepare, and update the order with staff in control.</p></article>
+        <article class="step"><h3>Completion</h3><p>Record payment status and share supported order updates.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="channels" aria-labelledby="channels-title">
+      <div class="section-heading">
+        <p class="eyebrow">Two connected surfaces</p>
+        <div>
+          <h2 id="channels-title">Act in WhatsApp. Configure and review on web.</h2>
+          <p>“Without leaving WhatsApp” describes the primary conversational experience. BABAI is not WhatsApp-only: web supports work that benefits from a larger, denser view.</p>
+        </div>
+      </div>
+      <div class="channel-grid">
+        <article class="channel whatsapp"><p class="eyebrow">Primary conversation surface</p><h3>WhatsApp</h3><p>Customer questions, menu and order interactions, status messages, staff actions, and human takeover are designed around the business's own WhatsApp identity.</p></article>
+        <article class="channel"><p class="eyebrow">Supporting productivity surface</p><h3>Web</h3><p>Use a larger view for configuration, menu review, order operations, comparison, analytics, recovery, and multi-branch administration as the product evolves.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="focus" aria-labelledby="focus-title">
+      <div class="focus">
+        <div><p class="eyebrow" style="color: var(--mint)">First validation scope</p><h2 id="focus-title">Start narrow.<br />Learn from the work.</h2></div>
+        <div class="focus-copy">
+          <p class="scope-label">Restaurant-first · pickup-first</p>
+          <p>The initial validation scope is one restaurant, one branch, and one business WhatsApp number. It keeps pickup first, includes human fallback, and has no delivery dependency.</p>
+          <p>This describes the pilot scope, not general availability, customer traction, or proof of product-market fit.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner"><span>BABAI — a product of Nekurama</span><a href="https://nekurama.com/">About Nekurama <span aria-hidden="true">↗</span></a></div>
+  </footer>
+</SiteLayout>
+

@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8f6">
+  <meta name="description" content="Nekurama's company-wide work lifecycle: shared stages, states, transitions, and department examples.">
+  <title>Nekurama Work Lifecycle</title>
+  <style>
+    :root{--ink:#182b2b;--muted:#647675;--line:#dbe5df;--paper:#f6f8f6;--white:#fff;--green:#19745f;--mint:#dff3e9;--lime:#bde8cd;--orange:#e8784c;--blue:#4c83b8;--navy:#152e32;--shadow:0 20px 55px rgba(27,58,51,.08);--radius:20px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+    a{color:var(--green);text-underline-offset:3px}button{font:inherit;color:inherit}
+    .shell{min-height:100vh}.rail{position:fixed;inset:0 auto 0 0;width:250px;background:var(--navy);color:#eaf4ee;padding:26px 18px;display:flex;flex-direction:column;z-index:5}
+    .brand{display:flex;align-items:center;gap:12px;padding:2px 10px 30px}.brand-mark{width:38px;height:38px;border-radius:13px;object-fit:cover;display:block;flex:none}
+    .brand strong{display:block;font-size:14px;letter-spacing:.08em}.brand small{display:block;color:#9dbab0;font-size:11px;margin-top:2px}
+    .rail-label{padding:6px 12px;color:#829f95;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+    .nav{display:grid;gap:5px}.nav a{color:#b7ccc4;text-decoration:none;padding:10px 12px;border-radius:11px;font-size:13px;font-weight:650;display:flex;gap:10px;align-items:center}.nav a:hover,.nav a.active{background:#244844;color:#fff}.nav .ico{width:18px;text-align:center;color:#91d6b1}
+    .rail-note{margin-top:auto;border:1px solid #345653;background:#1b3b3e;border-radius:14px;padding:14px;color:#b8cec6;font-size:11px}.rail-note b{color:#eafff1;display:block;margin-bottom:5px}
+    main{margin-left:250px}.topbar{height:58px;border-bottom:1px solid #e5ebe6;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;color:var(--muted);font-size:12px}.crumb{display:flex;gap:8px;align-items:center}.crumb b{color:var(--ink)}.status-pill{border:1px solid #c9e5d6;background:#effaf3;color:#287454;border-radius:99px;padding:5px 10px;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+    .content{max-width:1320px;margin:auto;padding:52px 5vw 90px}.eyebrow{color:var(--green);font-size:11px;font-weight:850;letter-spacing:.17em;text-transform:uppercase}.hero{display:grid;grid-template-columns:minmax(300px,.9fr) minmax(420px,1.1fr);gap:42px;align-items:center;padding:10px 0 48px}
+    h1{font-size:clamp(38px,5vw,64px);line-height:1.02;letter-spacing:-.055em;margin:14px 0 22px;max-width:640px}.lead{font-size:17px;color:#506461;max-width:590px;margin:0 0 25px}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap}.button{border:0;border-radius:11px;background:var(--green);color:white;text-decoration:none;padding:12px 17px;font-size:13px;font-weight:750;display:inline-flex;align-items:center;gap:8px;cursor:pointer}.button.secondary{background:white;color:var(--ink);border:1px solid var(--line)}
+    .hero-art{background:var(--navy);border-radius:26px;min-height:355px;padding:22px;position:relative;overflow:hidden;box-shadow:var(--shadow);color:white}
+    .art-head{display:flex;align-items:center;justify-content:space-between;color:#a9c9bd;font-size:11px}.live{display:flex;align-items:center;gap:7px}.live i{width:7px;height:7px;border-radius:50%;background:#84e2ad;box-shadow:0 0 0 5px #345851}
+    .cycle{height:252px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:24px 15px;align-items:center;margin:23px 3px 2px;position:relative}
+    .cycle:before,.cycle:after{content:"";position:absolute;border:1px dashed #5ca68d;opacity:.72;pointer-events:none}
+    .cycle:before{left:9%;right:9%;top:24%;height:0;border-width:1px 0 0}
+    .cycle:after{left:9%;right:9%;bottom:25%;height:0;border-width:1px 0 0}
+    .stage-node{z-index:1;background:#20433f;border:1px solid #3b665a;border-radius:13px;padding:11px 8px;text-align:center;color:#d9ede4;font-size:10px;font-weight:750;position:relative}
+    .stage-node .n{display:grid;place-items:center;margin:-24px auto 6px;width:25px;height:25px;border-radius:9px;background:#c9f0d4;color:#154b3d;font-size:11px}.stage-node:nth-child(2){grid-column:1;grid-row:1}.stage-node:nth-child(3){grid-column:2;grid-row:1}.stage-node:nth-child(4){grid-column:3;grid-row:1}.stage-node:nth-child(5){grid-column:4;grid-row:1}.stage-node:nth-child(6){grid-column:4;grid-row:2}.stage-node:nth-child(7){grid-column:3;grid-row:2}.stage-node:nth-child(8){grid-column:2;grid-row:2}.stage-node:nth-child(9){grid-column:1;grid-row:2}
+    .stage-node.selected{background:#e4f7eb;color:#194536;box-shadow:0 0 0 4px rgba(147,227,174,.15)}.stage-node.selected .n{background:#e8784c;color:#fff}
+    .traveler{position:absolute;z-index:3;left:9%;top:24%;width:12px;height:12px;border-radius:50%;background:#f69a67;box-shadow:0 0 0 6px #e8784c38;animation:journey 18s linear infinite}
+    @keyframes journey{0%,100%{left:9%;top:24%}12%{left:38%;top:24%}24%{left:68%;top:24%}36%{left:91%;top:24%}50%{left:91%;top:74%}62%{left:62%;top:74%}74%{left:32%;top:74%}88%{left:9%;top:74%}}
+    .art-caption{display:flex;justify-content:space-between;color:#a8c4b8;font-size:10px;margin-top:5px}.art-caption strong{color:#fff}
+    section{scroll-margin-top:24px}.section{padding:55px 0;border-top:1px solid var(--line)}.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:25px}.section-head h2{font-size:clamp(26px,3vw,38px);line-height:1.1;letter-spacing:-.04em;margin:8px 0}.section-head p{max-width:540px;color:var(--muted);margin:0;font-size:14px}.tag{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;background:#e9f3ec;border-radius:99px;color:#34694f;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+    .principles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.principle{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}.principle .symbol{width:32px;height:32px;border-radius:10px;background:var(--mint);color:var(--green);display:grid;place-items:center;font-weight:900;margin-bottom:13px}.principle strong{display:block;font-size:13px;margin-bottom:5px}.principle p{font-size:12px;color:var(--muted);margin:0}
+    .stage-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stage-card{background:white;border:1px solid var(--line);border-radius:16px;padding:17px;min-height:169px;cursor:pointer;text-align:left;transition:.2s;position:relative;overflow:hidden}.stage-card:hover,.stage-card.active{transform:translateY(-3px);border-color:#74b899;box-shadow:0 12px 24px rgba(26,90,68,.08)}.stage-card.active:after{content:"";height:4px;background:var(--orange);position:absolute;inset:auto 0 0}.stage-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}.stage-num{width:28px;height:28px;background:#e5f5eb;color:var(--green);border-radius:9px;display:grid;place-items:center;font-size:11px;font-weight:850}.stage-type{font-size:9px;color:#7c8d88;text-transform:uppercase;letter-spacing:.09em;font-weight:800}.stage-card strong{display:block;font-size:14px;line-height:1.2;margin-bottom:7px}.stage-card p{font-size:11px;color:var(--muted);margin:0}.detail-panel{margin-top:14px;background:var(--navy);color:#edf7f0;border-radius:18px;padding:20px 24px;display:grid;grid-template-columns:1.1fr .9fr;gap:30px}.detail-panel h3{margin:5px 0 8px;font-size:18px}.detail-panel p{color:#b7cec4;font-size:13px;margin:0}.detail-panel ul{margin:0;padding-left:18px;color:#d6e9df;font-size:12px}.detail-panel li+li{margin-top:5px}
+    .dual{display:grid;grid-template-columns:1fr 1fr;gap:14px}.flow-box{background:white;border:1px solid var(--line);border-radius:18px;padding:22px}.flow-box h3{font-size:15px;margin:0 0 5px}.flow-box>p{margin:0 0 17px;color:var(--muted);font-size:12px}.steps{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.chip{padding:7px 10px;border-radius:9px;background:#edf5ef;color:#274e40;font-size:10px;font-weight:800}.chip.stop{background:#ffede4;color:#9c4e31}.arrow{color:#96aaa1;font-size:13px}.loop-note{margin-top:15px;border-left:3px solid var(--orange);padding:9px 12px;background:#fff5ef;border-radius:0 9px 9px 0;font-size:11px;color:#714c3e}
+    .state-map{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.state{background:#f8fbf8;border:1px solid var(--line);border-radius:13px;padding:12px}.state b{font-size:11px}.state small{display:block;color:var(--muted);font-size:10px;margin-top:4px}.state.ready b{color:#267b57}.state.active b{color:#a35f28}.state.accept b{color:#3c65a1}.state.done b{color:#34694f}
+    .transition-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;font-size:12px}.transition-table th{text-align:left;background:#edf4ee;color:#50635d;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:12px}.transition-table td{padding:12px;border-top:1px solid #edf1ed;vertical-align:top}.transition-table td:first-child{font-weight:800;white-space:nowrap}.transition-table td:last-child{color:#566963}
+    .dept-layout{display:grid;grid-template-columns:250px 1fr;gap:18px}.dept-tabs{display:grid;gap:8px;align-content:start}.dept-tab{border:1px solid var(--line);background:white;border-radius:12px;padding:12px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:750;font-size:12px}.dept-tab span:first-child{width:29px;height:29px;display:grid;place-items:center;border-radius:9px;background:#e5f5eb}.dept-tab.active{border-color:#63ab8c;background:#eff9f2;color:var(--green)}
+    .journey-card{background:white;border:1px solid var(--line);border-radius:20px;overflow:hidden}.journey-head{padding:23px 25px 18px;border-bottom:1px solid #e9efea;display:flex;align-items:start;justify-content:space-between;gap:18px}.journey-head h3{margin:6px 0;font-size:22px;letter-spacing:-.03em}.journey-head p{margin:0;color:var(--muted);font-size:12px;max-width:700px}.pilot-mark{white-space:nowrap;font-size:9px;font-weight:850;color:#85552e;background:#fff0e3;border-radius:99px;padding:6px 9px}
+    .motion-map{margin:18px 22px 6px;background:#172f33;border-radius:16px;color:#fff;padding:18px 18px 13px;position:relative;overflow:hidden}.map-title{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#8fb0a3}.flow-track{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;margin-top:24px;position:relative}.flow-track:before{content:"";position:absolute;left:2%;right:2%;top:14px;border-top:1px dashed #5b9580}.flow-stop{position:relative;z-index:1;text-align:center;cursor:pointer}.flow-stop i{display:grid;place-items:center;width:28px;height:28px;margin:0 auto 8px;background:#24443f;border:1px solid #4f7968;border-radius:9px;font-style:normal;font-size:10px;font-weight:850;color:#c7ead4}.flow-stop b{display:block;font-size:9px;color:#c4d8ce;line-height:1.15}.flow-stop.current i{background:#ff9c69;border-color:#ff9c69;color:#3e2920;box-shadow:0 0 0 5px #ff9c6930}.flow-stop.current b{color:#fff}.route-dot{position:absolute;left:2%;top:37px;width:9px;height:9px;border-radius:50%;background:#ff9c69;box-shadow:0 0 0 5px #ff9c6930;animation:route 12s linear infinite}
+    @keyframes route{0%,100%{left:2%}14%{left:15%}28%{left:28%}42%{left:42%}56%{left:56%}70%{left:70%}84%{left:84%}98%{left:96%}}
+    .journey-bottom{display:grid;grid-template-columns:1fr 1.1fr;gap:0}.journey-copy{padding:20px 24px 23px;border-right:1px solid #e9efea}.journey-copy h4{margin:0 0 7px;font-size:14px}.journey-copy p{margin:0;color:var(--muted);font-size:12px}.journey-copy .criteria{margin-top:13px;padding:10px 12px;border-radius:10px;background:#f0f7f1;color:#3c6450;font-size:11px}
+    .step-list{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;padding:18px}.step-button{border:1px solid #e4ebe5;background:white;border-radius:10px;padding:9px;text-align:left;cursor:pointer}.step-button.active{border-color:#e8784c;background:#fff7f1}.step-button span{display:block;color:#82938b;font-size:8px;text-transform:uppercase;font-weight:850;letter-spacing:.08em}.step-button b{display:block;font-size:10px;margin-top:3px}.step-button small{display:block;font-size:9px;color:var(--muted);margin-top:3px}
+    .callout{display:flex;gap:13px;align-items:start;padding:16px 18px;border:1px solid #d1e8d8;background:#eff9f1;border-radius:14px;margin-top:18px}.callout b{font-size:12px;display:block}.callout p{font-size:11px;color:#557064;margin:3px 0 0}
+    .footer{border-top:1px solid var(--line);padding:22px 0 0;color:#74837e;font-size:10px;display:flex;justify-content:space-between;gap:10px}
+    @media(max-width:1100px){.rail{width:210px}main{margin-left:210px}.hero{grid-template-columns:1fr}.hero-art{min-height:340px}.stage-grid,.principles{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:760px){.rail{position:sticky;top:0;width:auto;height:auto;inset:auto;display:block;padding:9px 12px}.brand{padding:2px 3px 8px}.brand-mark{width:30px;height:30px}.brand strong{font-size:12px}.brand small,.rail-label,.rail-note{display:none}.nav{display:flex;overflow:auto;gap:3px}.nav a{white-space:nowrap;padding:7px 9px;font-size:10px}.nav .ico{display:none}main{margin:0}.topbar{height:40px;padding:0 16px}.content{padding:30px 16px 55px}.hero{gap:23px;padding:0 0 30px}.hero-art{min-height:300px;padding:16px}.cycle{height:205px;gap:19px 7px}.stage-node{font-size:8px;padding:8px 3px}.section{padding:38px 0}.section-head{display:block}.section-head p{margin-top:10px}.stage-grid,.principles{grid-template-columns:repeat(2,1fr)}.stage-card{min-height:160px;padding:13px}.dual{grid-template-columns:1fr}.state-map{grid-template-columns:repeat(2,1fr)}.transition-table{font-size:10px}.transition-table th,.transition-table td{padding:8px}.dept-layout{grid-template-columns:1fr}.dept-tabs{display:flex;overflow:auto}.dept-tab{white-space:nowrap;padding:7px 9px}.dept-tab span:first-child{width:24px;height:24px}.journey-head{padding:17px;display:block}.pilot-mark{display:inline-flex;margin-top:10px}.motion-map{margin:12px;padding:14px 9px}.flow-track{gap:2px}.flow-stop b{font-size:7px}.flow-stop i{width:24px;height:24px;font-size:9px}.journey-bottom{grid-template-columns:1fr}.journey-copy{border-right:0;border-bottom:1px solid #e9efea;padding:16px}.step-list{padding:12px}.detail-panel{grid-template-columns:1fr;gap:12px}.footer{display:block}.footer span{display:block;margin-top:5px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+  </style>
+</head>
+<body>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><img class="brand-mark" src="brand-assets/nekurama-line-art-mark.jpeg" alt=""><div><strong>NEKURAMA</strong><small>WORK LIFECYCLE</small></div></div>
+    <div class="rail-label">Reference</div>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="active" href="#overview"><span class="ico">◈</span>Overview</a>
+      <a href="#stages"><span class="ico">◉</span>Universal stages</a>
+      <a href="#transitions"><span class="ico">↗</span>Transitions & states</a>
+      <a href="#departments"><span class="ico">▦</span>Department journeys</a>
+    </nav>
+    <div class="rail-note"><b>One lifecycle. Many kinds of work.</b>Work type changes the evidence and review needed. It does not change the shared stages and states.</div>
+  </aside>
+  <main>
+    <div class="topbar"><div class="crumb"><span>Nekurama</span><span>›</span><b>Ways of working</b><span>›</span><span>Lifecycle guide</span></div><span class="status-pill">Working baseline</span></div>
+    <div class="content">
+      <section class="hero" id="overview">
+        <div>
+          <div class="eyebrow">Company-wide reference · v0.1</div>
+          <h1>One lifecycle for every kind of work.</h1>
+          <p class="lead">From a business question to a shipped feature, a campaign, or a smoother operation: use the same shared stages and state rules. Each team adds the evidence and review that fits its work.</p>
+          <div class="hero-actions"><a class="button" href="#stages">Explore the stages <span>↓</span></a><a class="button secondary" href="#departments">See team examples <span>↗</span></a></div>
+        </div>
+        <div class="hero-art" aria-label="Animated map of the eight work stages">
+          <div class="art-head"><span class="live"><i></i> UNIVERSAL WORK FLOW</span><span>8 connected stages · regression allowed</span></div>
+          <div class="cycle" id="cycle">
+            <div class="traveler"></div>
+            <div class="stage-node selected"><span class="n">01</span>Research</div><div class="stage-node"><span class="n">02</span>Specification</div><div class="stage-node"><span class="n">03</span>Planning</div><div class="stage-node"><span class="n">04</span>Tasking</div>
+            <div class="stage-node"><span class="n">05</span>Execution</div><div class="stage-node"><span class="n">06</span>Review</div><div class="stage-node"><span class="n">07</span>Delivery</div><div class="stage-node"><span class="n">08</span>Operate</div>
+          </div>
+          <div class="art-caption"><span><strong>Stage</strong> = where the work is</span><span><strong>State</strong> = what is happening now</span></div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="principles-title">
+        <div class="section-head"><div><span class="eyebrow">Shared contract</span><h2 id="principles-title">The rules that travel with the work</h2></div><p>These rules apply to technical and non-technical work across Nekurama. No tool status can replace a human decision.</p></div>
+        <div class="principles">
+          <article class="principle"><div class="symbol">01</div><strong>Shared source of truth</strong><p>GitHub records shared scope, owner, criteria, dependencies, and lifecycle. Paperclip records local execution.</p></article>
+          <article class="principle"><div class="symbol">02</div><strong>Sync ≠ permission</strong><p>An assignment or sync event updates context. A human still authorizes the specific execution plan.</p></article>
+          <article class="principle"><div class="symbol">03</div><strong>Evidence before gates</strong><p>Every work item has verifiable acceptance criteria. Completion is based on evidence and delivery conditions.</p></article>
+          <article class="principle"><div class="symbol">04</div><strong>Rework preserves history</strong><p>Return to the earliest stage whose output is invalid. Keep earlier decisions and artifacts traceable.</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="stages">
+        <div class="section-head"><div><span class="eyebrow">Universal stages</span><h2>Eight stages, from question to operation</h2></div><p>Choose a stage to see its purpose and the kind of evidence that supports moving forward. Stage changes and state changes are separate.</p></div>
+        <div class="stage-grid" id="stageGrid"></div>
+        <div class="detail-panel" id="stageDetail" aria-live="polite"></div>
+      </section>
+
+      <section class="section" id="transitions">
+        <div class="section-head"><div><span class="eyebrow">Transition logic</span><h2>Moving the work and managing its state</h2></div><p>The exact roles and evidence gates are being formalized. This view shows the current shared baseline without pretending every edge is already approved policy.</p></div>
+        <div class="dual">
+          <article class="flow-box"><h3>Stage movement</h3><p>Move forward when a stage has produced what the next stage needs.</p><div class="steps"><span class="chip">Research</span><span class="arrow">→</span><span class="chip">Specification</span><span class="arrow">→</span><span class="chip">Planning</span><span class="arrow">→</span><span class="chip">Tasking</span><span class="arrow">→</span><span class="chip">Execution</span><span class="arrow">→</span><span class="chip">Review</span><span class="arrow">→</span><span class="chip">Delivery</span><span class="arrow">→</span><span class="chip">Operate</span></div><div class="loop-note"><b>Rework:</b> If evidence invalidates earlier output, return to the earliest affected stage. Preserve the work and record why it changed.</div></article>
+          <article class="flow-box"><h3>State movement</h3><p>State says what is happening to this work item now, regardless of stage.</p><div class="state-map">
+            <div class="state"><b>Draft</b><small>Define the work; not executable yet.</small></div><div class="state ready"><b>Ready</b><small>Clear owner, scope, criteria, prerequisites.</small></div><div class="state active"><b>Active</b><small>Authorized work is underway.</small></div><div class="state"><b>Blocked</b><small>Waiting on a dependency, resource, or decision.</small></div>
+            <div class="state"><b>InReview</b><small>Deliverable submitted for review.</small></div><div class="state accept"><b>Accepted</b><small>Review and acceptance checks passed.</small></div><div class="state done"><b>Completed</b><small>Delivery and handover conditions met.</small></div><div class="state"><b>Cancelled</b><small>Stopped with history preserved.</small></div>
+          </div></article>
+        </div>
+        <div style="height:16px"></div>
+        <table class="transition-table">
+          <thead><tr><th>From → To</th><th>Typical trigger</th><th>Guard / evidence</th></tr></thead>
+          <tbody>
+            <tr><td>Draft → Ready</td><td>Definition is usable for planning or execution.</td><td>Owner, scope, acceptance criteria, dependencies and prerequisites are clear enough.</td></tr>
+            <tr><td>Ready → Active</td><td>Authorized work starts.</td><td>Human selects the item, approves the plan and scope, and current assignment and permissions are revalidated. Ready alone is not permission.</td></tr>
+            <tr><td>Active → Blocked → Active</td><td>A dependency prevents progress, then is resolved.</td><td>Record the blocker, owner and resolution; recheck authorization if scope or context changed.</td></tr>
+            <tr><td>Active → InReview</td><td>Deliverable is submitted.</td><td>Attach evidence mapped to the acceptance criteria and request the applicable review.</td></tr>
+            <tr><td>InReview → Active</td><td>Changes requested or acceptance gap found.</td><td>Record findings; return to Execution or the earliest earlier stage made invalid.</td></tr>
+            <tr><td>InReview → Accepted</td><td>Applicable review passes.</td><td>Authorized reviewer records the decision and evidence. Agent completion is not acceptance.</td></tr>
+            <tr><td>Accepted → Completed</td><td>Delivery and handover finish.</td><td>Record delivery destination, handover, and any required operational readiness evidence.</td></tr>
+            <tr><td>Any open state → Cancelled</td><td>Work is explicitly withdrawn or stopped.</td><td>Authorized human records rationale and preserves history. Reopening rules remain part of the contract work.</td></tr>
+          </tbody>
+        </table>
+        <div class="callout"><div class="symbol">!</div><div><b>Eligibility, authorization, acceptance, and completion are four different checks.</b><p>Local Paperclip run states do not force GitHub transitions. Reassignment, revoked permission, offline context, and sensitive actions require explicit revalidation.</p></div></div>
+      </section>
+
+      <section class="section" id="departments">
+        <div class="section-head"><div><span class="eyebrow">Curated examples · BABAI</span><h2>What the same lifecycle looks like by team</h2></div><p>Pick a department, then step through the animated journey. The underlying stages stay the same; each example changes its deliverables, evidence, and handoffs.</p></div>
+        <div class="dept-layout">
+          <div class="dept-tabs" role="tablist" aria-label="Department examples">
+            <button class="dept-tab active" role="tab" aria-selected="true" data-dept="tech"><span>⌘</span>Technology</button>
+            <button class="dept-tab" role="tab" aria-selected="false" data-dept="marketing"><span>✳</span>Marketing</button>
+            <button class="dept-tab" role="tab" aria-selected="false" data-dept="operations"><span>⚙</span>Operations</button>
+            <button class="dept-tab" role="tab" aria-selected="false" data-dept="sales"><span>↗</span>Sales</button>
+          </div>
+          <div id="journey"></div>
+        </div>
+      </section>
+      <footer class="footer"><span>Nekurama · Company-wide work lifecycle</span><span>Working baseline · Transition contract tracked in <a href="https://github.com/nekurama/Bulb/issues/7">Bulb #7</a></span></footer>
+    </div>
+  </main>
+</div>
+<script>
+const stages=[
+ {name:"Research / Discovery",short:"Research",purpose:"Understand the problem, opportunity, evidence, assumptions, and feasibility.",outputs:["Problem or opportunity statement","Evidence, sources, and assumptions","Feasibility and open questions"],exit:"A decision-maker can explain why the work matters and what remains uncertain."},
+ {name:"Specification",short:"Specification",purpose:"Describe the intended outcome, users, constraints, and measurable acceptance criteria.",outputs:["Requirements or brief","In-scope and out-of-scope boundaries","Acceptance criteria and constraints"],exit:"The expected result can be understood and evaluated without guessing."},
+ {name:"Planning / Design",short:"Planning",purpose:"Choose an approach, sequencing, owners, dependencies, and risk controls.",outputs:["Approach or solution design","Dependencies, estimates, and risks","Review and delivery plan"],exit:"There is a workable path from the requirement to a deliverable."},
+ {name:"Tasking / Readiness",short:"Tasking",purpose:"Break work into assignable pieces and confirm prerequisites.",outputs:["Owned work items","Sequencing and dependency links","Ready criteria and access prerequisites"],exit:"The work is actionable, properly owned, and ready for explicit authorization."},
+ {name:"Execution / Production",short:"Execution",purpose:"Create the actual product, service, decision, content, or operational change.",outputs:["Deliverables and progress record","Material decisions and changes","Evidence collected as work proceeds"],exit:"The agreed deliverable is ready to be checked against its criteria."},
+ {name:"Review / Validation",short:"Review",purpose:"Check correctness, quality, suitability, and compliance with the brief.",outputs:["Review findings","Tests, facts, approvals, or demonstrations","Accepted result or explicit changes requested"],exit:"The appropriate reviewer records an evidence-based acceptance decision."},
+ {name:"Integration / Delivery",short:"Delivery",purpose:"Make the accepted result available to its intended user and hand it over.",outputs:["Merge, release, publication, or handover","Recipient confirmation where needed","Delivery and operation evidence"],exit:"The result is available and required handover conditions are met."},
+ {name:"Operate / Maintain",short:"Operate",purpose:"Observe outcomes, respond to issues, and keep the result useful.",outputs:["Monitoring or feedback","Maintenance and improvement work","Linked follow-up with retained history"],exit:"Ongoing work is stable, or new work is linked and re-enters the lifecycle."}
+];
+const stageGrid=document.getElementById("stageGrid");
+const stageDetail=document.getElementById("stageDetail");
+function showStage(i){
+ const s=stages[i];
+ document.querySelectorAll(".stage-card").forEach((el,n)=>el.classList.toggle("active",n===i));
+ stageDetail.innerHTML='<div><span class="tag">Stage '+String(i+1).padStart(2,"0")+'</span><h3>'+s.name+'</h3><p>'+s.purpose+'</p></div><div><b style="font-size:10px;color:#91d4ae;text-transform:uppercase;letter-spacing:.1em">Outputs and exit evidence</b><ul>'+s.outputs.map(x=>'<li>'+x+'</li>').join("")+'<li><b>Exit:</b> '+s.exit+'</li></ul></div>';
+}
+stages.forEach((s,i)=>{const b=document.createElement("button");b.className="stage-card";b.innerHTML='<div class="stage-top"><span class="stage-num">'+String(i+1).padStart(2,"0")+'</span><span class="stage-type">Universal</span></div><strong>'+s.name+'</strong><p>'+s.purpose+'</p>';b.addEventListener("click",()=>showStage(i));stageGrid.appendChild(b)});
+showStage(0);
+const names=["Research","Specification","Planning","Tasking","Execution","Review","Delivery","Operate"];
+const examples={
+ tech:{title:"Ship a reliable order-status notification improvement",summary:"Improve the restaurant customer's order updates while keeping order state authoritative and message delivery independently observable.",criterion:"Acceptance evidence: state-transition tests, verified message behavior, retry/idempotency checks, and a safe rollout plan.",items:[
+  ["Find the problem","Use pilot restaurant and customer feedback to identify where status updates are late, confusing, or missing. Check existing event and provider evidence."],
+  ["Define expected behavior","Specify supported order events, customer-visible copy, delivery guarantees, consent/policy constraints, and failure behavior. Payment and order states remain separate."],
+  ["Design a bounded change","Plan domain event handling, templates, adapter boundary, idempotency, retries, observability, rollout and rollback. Avoid provider details leaking into core order state."],
+  ["Prepare owned tasks","Split schema/API, template, adapter, tests, instrumentation, and rollout tasks. Link cross-team dependencies and clarify required access."],
+  ["Implement and record","Build the change in the approved scope. Keep provider callbacks verified, handlers idempotent, and message submissions distinct from delivery confirmation."],
+  ["Validate with evidence","Review tests, event replay, duplicate delivery, failure recovery, copy and customer policy. Have an independent reviewer inspect the change."],
+  ["Release and hand over","Merge and deploy only with required authorization. Record version, rollout scope, operator notes, rollback, and support handoff."],
+  ["Monitor and improve","Track accepted/submitted/delivered/failed outcomes, support feedback, and regressions. Link fixes or new requirements as follow-up work."]
+ ]},
+ marketing:{title:"Recruit the first ten Hyderabad restaurant pilot partners",summary:"Test BABAI's restaurant-first proposition with founder-led, evidence-based outreach and a small measurable campaign.",criterion:"Acceptance evidence: approved audience and claims, source-tracked outreach, qualified conversations, response patterns, and documented learnings.",items:[
+  ["Research the audience","Study Hyderabad restaurant segments, owner interviews, existing feedback, alternatives, and objections. Separate observed evidence from assumptions."],
+  ["Write the campaign brief","Set objective, ICP, promise, channel, message, CTA, budget, measures, consent, and exclusions. BABAI naming/claims remain subject to clearance and validation."],
+  ["Plan message and experiment","Choose a small channel mix, testable message variants, timeline, owner, review gates, lead capture, and stop conditions."],
+  ["Prepare campaign assets","Create approved copy, one-pager/demo, audience list, tracking fields, and response scripts. Confirm who can approve claims and spend."],
+  ["Run the approved test","Publish or send only within the authorized audience, channel, content, and budget. Record reach, replies, opt-outs, and context."],
+  ["Check claims and learning","Fact-check product and pricing claims, review consent/opt-out handling, compare outcomes against the brief, and distinguish signal from anecdote."],
+  ["Share results and handoff","Deliver the campaign summary to founders and sales. Pass qualified leads with source, stated needs, consent, and next action."],
+  ["Maintain and refine","Track follow-up, referrals, feedback, and message fatigue. Create linked experiments; update durable positioning only with evidence."]
+ ]},
+ operations:{title:"Onboard and activate a pilot restaurant",summary:"Take a restaurant from signed pilot intent through verified WhatsApp readiness, menu review, staff enablement, and supported first use.",criterion:"Acceptance evidence: readiness checklist, owner-approved menu, successful test order, staff handoff, and known support/escalation path.",items:[
+  ["Discover operational context","Map branches, existing WhatsApp use, menu workflow, staff roles, peak periods, delivery/payment setup, and onboarding constraints."],
+  ["Define readiness","Agree target branch, responsibilities, required data, channel readiness, menu acceptance, training, first-use criteria, and exclusions."],
+  ["Plan a safe onboarding","Sequence identity/channel verification, catalog import, review, configuration, staff training, test order, go-live and support coverage."],
+  ["Assign checklist items","Name accountable owner and operators for each prerequisite. Record dependencies, credentials/access needs, and escalation contact."],
+  ["Configure and train","Connect the supported channel, verify configuration, prepare menu candidate, correct issues with the owner, and train staff on handoff."],
+  ["Run readiness review","Test customer journey and staff takeover, verify order/payment/fulfillment boundaries, inspect failure handling, and capture owner sign-off."],
+  ["Go live and hand over","Activate the agreed scope; give staff operating instructions, support route, and known limitations. Record activation time and evidence."],
+  ["Support and improve","Monitor early usage, incidents, feedback, and unresolved needs. Resolve operational issues or open linked maintenance/product work."]
+ ]},
+ sales:{title:"Qualify and convert a restaurant for the pilot",summary:"Run founder-led selling for the initial restaurant wedge, establish fit and expectations, then make a clean handoff to operations.",criterion:"Acceptance evidence: qualification notes, truthful approved offer, explicit pilot scope and terms, customer decision, and accepted ops handoff.",items:[
+  ["Research the prospect","Identify restaurant fit, decision-maker, current ordering and operations, relevant referrals, and likely need. Respect contact preferences."],
+  ["Define qualification","Record ICP signals, discovery questions, disqualifiers, pilot value hypothesis, decision criteria, and what claims need substantiation."],
+  ["Plan the conversation","Prepare tailored discovery, demo, objections, follow-up, offer boundaries, and next step. Use only approved product/pricing statements."],
+  ["Prepare lead and ownership","Create a shared work item or CRM record with accountable owner, source, consent/contact preference, next action, and relevant context."],
+  ["Discover and demonstrate","Understand the owner's current workflow, demonstrate relevant verified capabilities, document needs and objections, and avoid unsupported promises."],
+  ["Review fit and terms","Confirm scope, responsibilities, pilot measures, pricing/terms approval, dependencies, and unresolved risk with the decision-maker."],
+  ["Agree and hand over","Record the customer's decision and authorized commitments. Hand operations a concise context package; do not mark activation complete until readiness passes."],
+  ["Maintain the relationship","Follow up on outcomes, value, objections, renewal/expansion signals and referrals. Link product or process improvements to the evidence."]
+ ]}
+};
+let currentDept="tech",currentStep=0;
+function renderJourney(){
+ const d=examples[currentDept];
+ const stops=names.map((n,i)=>'<button class="flow-stop '+(i===currentStep?'current':'')+'" data-step="'+i+'" aria-label="Step '+(i+1)+': '+n+'"><i>'+String(i+1).padStart(2,"0")+'</i><b>'+n+'</b></button>').join("");
+ const buttons=d.items.map((it,i)=>'<button class="step-button '+(i===currentStep?'active':'')+'" data-step="'+i+'"><span>Stage '+String(i+1).padStart(2,"0")+'</span><b>'+names[i]+': '+it[0]+'</b><small>'+it[1]+'</small></button>').join("");
+ document.getElementById("journey").innerHTML='<article class="journey-card"><header class="journey-head"><div><span class="eyebrow">'+currentDept+' · BABAI pilot context</span><h3>'+d.title+'</h3><p>'+d.summary+'</p></div><span class="pilot-mark">ILLUSTRATIVE WORKFLOW</span></header><div class="motion-map"><div class="map-title">End-to-end journey · select a stage to explore</div><div class="route-dot"></div><div class="flow-track">'+stops+'</div></div><div class="journey-bottom"><div class="journey-copy"><span class="tag">'+names[currentStep]+'</span><h4 style="margin-top:11px">'+d.items[currentStep][0]+'</h4><p>'+d.items[currentStep][1]+'</p><div class="criteria"><b>What good looks like</b><br>'+d.criterion+'</div></div><div class="step-list">'+buttons+'</div></div></article>';
+ document.querySelectorAll("#journey [data-step]").forEach(el=>el.addEventListener("click",()=>{currentStep=Number(el.dataset.step);renderJourney()}));
+}
+document.querySelectorAll(".dept-tab").forEach(el=>el.addEventListener("click",()=>{document.querySelectorAll(".dept-tab").forEach(t=>{t.classList.toggle("active",t===el);t.setAttribute("aria-selected",t===el?"true":"false")});currentDept=el.dataset.dept;currentStep=0;renderJourney()}));
+renderJourney();
+const navLinks=[...document.querySelectorAll(".nav a")];
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){navLinks.forEach(a=>a.classList.toggle("active",a.hash==="#"+e.target.id))}}),{rootMargin:"-30% 0px -60% 0px"});
+["overview","stages","transitions","departments"].forEach(id=>observer.observe(document.getElementById(id)));
+</script>
+</body>
+</html>
