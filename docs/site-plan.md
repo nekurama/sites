@@ -31,7 +31,7 @@ The source for all public sites, including SDLC, lives in this repository. Exist
 - Express passion meeting innovation through structured engineering, India's engineering pride, and the long-term aspiration to make ventures across fields building blocks toward a smart environment in harmony with nature.
 - Treat the cross-sector vision as an aspiration, not a claim that Nekurama currently operates across those fields.
 - The `/products/` index introduces the portfolio and links to individual product pages.
-- The name-origin story remains internal until separately approved for public use.
+- Keep the personal name-origin story out of the company pitch and metadata. Make it discoverable only through a tucked-away, keyboard-accessible Easter egg on the line-art mark.
 
 ### BABAI
 
@@ -54,7 +54,6 @@ The target is one GitHub Pages site at `nekurama.com`, serving the combined outp
 
 ## Open decisions
 
-- Decide whether to explain the personal name-origin story publicly or keep its references as background inspiration.
 - Confirm a future visitor action and destination if the BABAI site needs more than informational navigation.
 - Confirm public contact and legal/privacy destinations before adding them.
 - Complete brand/trademark and public-asset review before selecting logo candidates.

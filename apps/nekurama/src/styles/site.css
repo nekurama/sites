@@ -41,6 +41,18 @@ h1 { max-width: 700px; margin-bottom: 1.5rem; font-size: clamp(3.35rem, 7.3vw, 6
 .button:hover { transform: translateY(-1px); background: var(--ink); border-color: var(--ink); }
 .hero-art { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 440px; margin: 0; padding: 2rem 1.25rem 1.5rem; overflow: hidden; border: 1px solid #49382e; border-radius: 48% 48% 5px 5px; background: #211c19; color: #fffaf4; text-align: center; }
 .hero-art img { display: block; width: min(84%, 320px); height: auto; aspect-ratio: 1; object-fit: contain; }
+.name-egg { width: 100%; }
+.name-egg summary { position: relative; display: grid; justify-items: center; cursor: pointer; list-style: none; }
+.name-egg summary::-webkit-details-marker { display: none; }
+.name-egg summary:focus-visible { outline: 3px solid #f2c4a2; outline-offset: 5px; border-radius: 4px; }
+.name-egg-hint { position: absolute; right: 9%; bottom: .35rem; padding: .35rem .55rem; border: 1px solid rgb(255 250 244 / 55%); border-radius: 3px; background: #211c19; color: #fffaf4; font-size: .72rem; letter-spacing: .04em; opacity: 0; transform: translateY(4px); transition: opacity 160ms ease, transform 160ms ease; }
+.name-egg summary:hover .name-egg-hint, .name-egg summary:focus-visible .name-egg-hint { opacity: 1; transform: translateY(0); }
+.name-egg-story { width: min(100%, 540px); margin: 1rem auto 0; padding: 1.2rem; border: 1px solid rgb(255 250 244 / 30%); border-radius: 4px; background: rgb(255 250 244 / 7%); text-align: left; }
+.name-egg-story .eyebrow { margin-bottom: .6rem; color: #e8b79c; font-size: .62rem; }
+.name-egg-story h2 { margin-bottom: .9rem; font-size: clamp(1.6rem, 4vw, 2rem); }
+.name-egg-story p:not(.eyebrow) { margin-bottom: .65rem; color: #f1e7dc; font-size: .84rem; line-height: 1.6; }
+.name-egg-story strong { color: #fffaf4; }
+.name-egg-story .name-egg-note { margin: 1rem 0 0; color: #e3d7ca; font-size: .72rem; font-style: italic; }
 .hero-art figcaption { display: grid; gap: .35rem; margin-top: .8rem; font-family: var(--display); font-size: 1.1rem; }
 .hero-art figcaption span { color: #e3d7ca; font-family: var(--font-body); font-size: .78rem; line-height: 1.5; }
 .section { padding-block: clamp(4rem, 8vw, 7rem); border-top: 1px solid var(--line); scroll-margin-top: 1.5rem; }
