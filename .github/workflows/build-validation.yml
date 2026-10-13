@@ -1,0 +1,30 @@
+name: Build validation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Build Nekurama
+        run: pnpm build:nekurama
+      - name: Build BABAI
+        run: pnpm build:babai
+      - name: Validate SDLC static source
+        run: pnpm validate:sdlc

@@ -50,16 +50,16 @@ import SiteLayout from '../layouts/SiteLayout.astro';
         <p class="eyebrow">The operating flow</p>
         <div>
           <h2 id="workflow-title">One conversation. A coordinated next step.</h2>
-          <p>BABAI is designed to connect customer intent with the business actions needed to complete an order. The flow below describes the product direction, not a claim that every integration is available today.</p>
+          <p>When a request becomes an order, its details need to carry through menu selection, restaurant review, fulfillment, and customer updates. BABAI is designed to connect these steps while keeping staff in control. This describes product direction, not a claim that every integration is available today.</p>
         </div>
       </div>
-      <div class="steps" aria-label="Intended BABAI workflow">
-        <article class="step"><h3>Conversation</h3><p>Understand the customer's question or request in the business context.</p></article>
-        <article class="step"><h3>Menu</h3><p>Use the restaurant's catalog and availability as the reference.</p></article>
-        <article class="step"><h3>Pickup order</h3><p>Shape the request into an order the business can review.</p></article>
-        <article class="step"><h3>Restaurant work</h3><p>Accept, prepare, and update the order with staff in control.</p></article>
-        <article class="step"><h3>Completion</h3><p>Record payment status and share supported order updates.</p></article>
-      </div>
+      <ol class="steps">
+        <li class="step"><h3>Conversation</h3><p>Understand the customer's question or request in the business context.</p></li>
+        <li class="step"><h3>Menu</h3><p>Use the restaurant's catalog and availability as the reference.</p></li>
+        <li class="step"><h3>Pickup order</h3><p>Shape the request into an order the business can review.</p></li>
+        <li class="step"><h3>Restaurant operations</h3><p>Accept, prepare, and update the order with staff in control.</p></li>
+        <li class="step"><h3>Completion</h3><p>Record payment status and share supported order updates.</p></li>
+      </ol>
     </section>
 
     <section class="section" id="channels" aria-labelledby="channels-title">
@@ -78,7 +78,7 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 
     <section class="section" id="focus" aria-labelledby="focus-title">
       <div class="focus">
-        <div><p class="eyebrow" style="color: var(--mint)">First validation scope</p><h2 id="focus-title">Start narrow.<br />Learn from the work.</h2></div>
+        <div><p class="eyebrow">First validation scope</p><h2 id="focus-title">Start narrow.<br />Learn from the work.</h2></div>
         <div class="focus-copy">
           <p class="scope-label">Restaurant-first · pickup-first</p>
           <p>The initial validation scope is one restaurant, one branch, and one business WhatsApp number. It keeps pickup first, includes human fallback, and has no delivery dependency.</p>
@@ -92,4 +92,3 @@ import SiteLayout from '../layouts/SiteLayout.astro';
     <div class="wrap footer-inner"><span>BABAI — a product of Nekurama</span><a href="https://nekurama.com/">About Nekurama <span aria-hidden="true">↗</span></a></div>
   </footer>
 </SiteLayout>
-
