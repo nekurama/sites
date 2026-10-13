@@ -3,11 +3,11 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 ---
 
 <SiteLayout
-  title="Nekurama — ideas in motion"
-  description="Nekurama explores ideas and inspiration, and the products they can become."
+  title="Nekurama — where passion meets innovation"
+  description="Nekurama brings passion and innovation together through thoughtful engineering, building toward a smarter environment in harmony with nature."
 >
   <header class="wrap topbar">
-    <a class="wordmark" href="#top" aria-label="Nekurama home">NEKURAMA</a>
+    <a class="wordmark" href="#top" aria-label="Nekurama home" translate="no">NEKURAMA</a>
     <nav aria-label="Main navigation">
       <a href="#company">Company</a>
       <a href="/products/">Products</a>
@@ -17,23 +17,23 @@ import SiteLayout from '../layouts/SiteLayout.astro';
   <main id="main" class="wrap">
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div>
-        <p class="eyebrow">Ideas, explored with intention</p>
-        <h1 id="hero-title">A vision in motion.</h1>
-        <p class="lede">Nekurama is a company shaped by curiosity: exploring ideas, following inspiration, and creating products from what feels worth pursuing.</p>
+        <p class="eyebrow">Passion, given structure</p>
+        <h1 id="hero-title">Where passion meets innovation.</h1>
+        <p class="lede">Nekurama is a place to explore ideas and give them structure through thoughtful engineering. We want India to be proud of its engineers and everyone who builds with passion.</p>
         <a class="button" href="/products/">Explore our products <span aria-hidden="true">↘</span></a>
       </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="orbit"></div><span class="signal one"></span><span class="signal two"></span>
-        <div class="orbit-label"><strong>Ideas move.<br />Possibilities open.</strong><span>Exploration becomes inspiration.<br />Inspiration can become something useful.</span></div>
-      </div>
+      <figure class="hero-art">
+        <img src="/brand/nekurama-line-art-mark.jpeg" alt="" width="1254" height="1254" fetchpriority="high" />
+        <figcaption><strong>Curiosity opens the way.</strong><span>Thoughtful work gives ideas shape.</span></figcaption>
+      </figure>
     </section>
 
     <section class="section" id="company" aria-labelledby="company-title">
       <div class="section-heading">
-        <p class="eyebrow">What moves us</p>
+        <p class="eyebrow">A wider horizon</p>
         <div>
-          <h2 id="company-title">Curiosity gives ideas room to grow.</h2>
-          <p>We follow questions, notice possibilities, and explore what could make a meaningful difference. Some ideas become products. Each one starts with looking closer.</p>
+          <h2 id="company-title">Every venture can be a building block.</h2>
+          <p>Our vision extends beyond software—to commodities, real estate, education, and fields still to come. We see each venture as a possible building block toward a smarter environment that grows in harmony with nature.</p>
         </div>
       </div>
       <p><a class="text-link" href="/products/">Explore our products <span aria-hidden="true">↗</span></a></p>
@@ -41,6 +41,6 @@ import SiteLayout from '../layouts/SiteLayout.astro';
   </main>
 
   <footer class="footer">
-    <div class="wrap footer-inner"><span>NEKURAMA</span><a class="text-link" href="/products/">Explore our products</a></div>
+    <div class="wrap footer-inner"><span translate="no">NEKURAMA</span><a class="text-link" href="/products/">Explore our products</a></div>
   </footer>
 </SiteLayout>

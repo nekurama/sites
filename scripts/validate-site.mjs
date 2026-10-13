@@ -29,6 +29,17 @@ if (/babai/i.test(companyHtml)) {
   throw new Error('Nekurama company page must not mention BABAI.');
 }
 
+if (!companyHtml.includes('src="/brand/nekurama-line-art-mark.jpeg"')) {
+  throw new Error('Nekurama company page is missing its line-art brand mark.');
+}
+
+const markSource = readFileSync(path.join(repositoryDirectory, 'apps', 'sdlc', 'site', 'brand-assets', 'nekurama-line-art-mark.jpeg'));
+const markCopyPath = path.join(outputDirectory, 'brand', 'nekurama-line-art-mark.jpeg');
+const markCopy = readFileSync(markCopyPath);
+if (!markSource.equals(markCopy)) {
+  throw new Error('Nekurama company mark copy differs from its source asset.');
+}
+
 if (!productsHtml.includes('href="/products/babai/"')) {
   throw new Error('Nekurama products page is missing its BABAI path link.');
 }

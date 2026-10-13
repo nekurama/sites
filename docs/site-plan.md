@@ -2,11 +2,12 @@
 
 ## Audience and hierarchy
 
-Most visitors are expected to go to the BABAI product site. It is the primary public explanation of what BABAI is designed to offer. The Nekurama site is a brief parent-company page that establishes the relationship and points to BABAI.
+Most visitors are expected to go to a product page. Nekurama's company page introduces the company's motivation and long-term vision, then points visitors to its product index. Product details belong on their respective pages.
 
 ```text
-NEKURAMA (parent company)
-└── BABAI (first product)
+NEKURAMA (company)
+└── Products
+    └── BABAI (first product)
 
 SDLC (company-wide working guide)
 ```
@@ -25,9 +26,12 @@ The source for all public sites, including SDLC, lives in this repository. Exist
 
 ### Nekurama
 
-- State that Nekurama is the parent company and BABAI is its first product.
-- Give visitors a direct path to BABAI.
-- Leave mission, portfolio claims, founder biographies, and public contact details out until approved.
+- Use the approved Warm Editorial visual direction.
+- Keep the company page product-neutral. Its CTA is “Explore our products” and links to `/products/`.
+- Express passion meeting innovation through structured engineering, India's engineering pride, and the long-term aspiration to make ventures across fields building blocks toward a smart environment in harmony with nature.
+- Treat the cross-sector vision as an aspiration, not a claim that Nekurama currently operates across those fields.
+- The `/products/` index introduces the portfolio and links to individual product pages.
+- The name-origin story remains internal until separately approved for public use.
 
 ### BABAI
 
@@ -50,7 +54,7 @@ The target is one GitHub Pages site at `nekurama.com`, serving the combined outp
 
 ## Open decisions
 
-- Review the visual direction using the local preview before treating it as the final brand treatment.
+- Decide whether to explain the personal name-origin story publicly or keep its references as background inspiration.
 - Confirm a future visitor action and destination if the BABAI site needs more than informational navigation.
 - Confirm public contact and legal/privacy destinations before adding them.
 - Complete brand/trademark and public-asset review before selecting logo candidates.
