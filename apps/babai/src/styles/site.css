@@ -58,7 +58,7 @@ h1 { max-width: 780px; margin-bottom: 1.45rem; font-size: clamp(3.15rem, 7.2vw, 
 .flow-line { position: absolute; top: 164px; left: 23%; width: 54%; border-top: 1px dashed rgb(164 230 215 / 60%); transform: rotate(21deg); }
 .flow-stamp { position: absolute; right: 13%; bottom: 31px; width: 102px; padding: .75rem; border: 1px solid rgb(255 255 255 / 24%); border-radius: 14px; color: #d7e5df; font-size: .7rem; line-height: 1.5; text-align: center; }
 .flow-stamp strong { display: block; color: white; font-size: .82rem; }
-.section { padding-block: clamp(4.2rem, 8vw, 7rem); border-top: 1px solid var(--line); }
+.section { padding-block: clamp(4.2rem, 8vw, 7rem); border-top: 1px solid var(--line); scroll-margin-top: 1rem; }
 .section-heading { display: grid; grid-template-columns: .72fr 1.28fr; gap: 2rem; align-items: start; margin-bottom: 2.5rem; }
 .section-heading h2 { max-width: 670px; margin: 0; font-size: clamp(2rem, 4.5vw, 4rem); line-height: 1.03; letter-spacing: -.06em; }
 .section-heading > div > p { max-width: 610px; margin: .6rem 0 0; color: var(--muted); line-height: 1.7; }
@@ -68,6 +68,7 @@ h1 { max-width: 780px; margin-bottom: 1.45rem; font-size: clamp(3.15rem, 7.2vw, 
 .step h3 { margin: 0 0 .5rem; font-size: 1.05rem; letter-spacing: -.025em; }
 .step p { margin: 0; color: var(--muted); font-size: .84rem; line-height: 1.55; }
 .channel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.control-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .channel { padding: clamp(1.3rem, 3vw, 2rem); border-radius: 20px; background: var(--surface); }
 .channel.whatsapp { background: var(--mint); }
 .channel .eyebrow { margin-bottom: 1.7rem; }
