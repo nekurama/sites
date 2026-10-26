@@ -1,0 +1,80 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+
+<SiteLayout
+  title="Privacy — Nekurama"
+  description="Privacy information for Nekurama's static websites and current BABAI WhatsApp pilot."
+>
+  <header class="wrap topbar">
+    <a class="wordmark" href="/" aria-label="Nekurama home" translate="no">NEKURAMA</a>
+    <nav aria-label="Main navigation">
+      <a href="/">Company</a>
+      <a href="/products/">Products</a>
+      <a href="/privacy/" aria-current="page">Privacy</a>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap legal-page">
+    <article>
+      <p class="eyebrow">Privacy</p>
+      <h1>Privacy notice</h1>
+      <p class="lede">How information is handled on Nekurama's public websites and in the current BABAI WhatsApp test and pilot.</p>
+      <p class="policy-date">Last updated: 26 October 2026</p>
+
+      <section aria-labelledby="operator">
+        <h2 id="operator">Who operates these services</h2>
+        <p><strong>NEKURAMA PRIVATE LIMITED</strong> operates these websites and BABAI (Business Automation By AI). In this notice, “Nekurama”, “we”, and “us” refer to this company.</p>
+        <p>Privacy and deletion requests: <a href="mailto:facebook.babai@nekurama.com">facebook.babai@nekurama.com</a>.</p>
+      </section>
+
+      <section aria-labelledby="scope">
+        <h2 id="scope">What this notice covers</h2>
+        <p>This notice covers Nekurama's public static websites, hosted on GitHub Pages, and current BABAI WhatsApp test and pilot processing. The WhatsApp integrations described here are local proof-of-concept (POC) tests, not a generally available production SaaS service.</p>
+        <p>This notice does not describe future or unimplemented BABAI capabilities. We will update it if the services or their data handling materially change.</p>
+      </section>
+
+      <section aria-labelledby="information">
+        <h2 id="information">Information and why it is used</h2>
+        <ul>
+          <li><strong>Public website visits:</strong> GitHub Pages serves the static site. The hosting provider may process technical request information as part of serving it. Our current website code does not add advertising or analytics trackers, account signup forms, or third-party embeds. Hosting and network providers may still receive IP addresses, browser details, timestamps, and requested URLs. The financial planning calculator runs in your browser; its inputs are not sent to our application server.</li>
+          <li><strong>WhatsApp messages:</strong> For a current pilot, Meta's Cloud API delivers incoming message content, sender phone number and profile name, message IDs and statuses, and relevant WhatsApp account and phone IDs to the local service. This information is used to process the pilot conversation, generate replies, maintain conversation context, and avoid duplicate message processing. Technical event logs may include message IDs, processing outcomes, timestamps, and error details.</li>
+          <li><strong>Restaurant ordering POC:</strong> Conversation, cart, order, and preference data are held in memory to support the test workflow. Message IDs and processing statuses are persisted locally for deduplication. The POC's payment and delivery steps are simulated; it does not process actual payments or arrange actual delivery.</li>
+        </ul>
+        <p>For inference in these POCs, messages are processed by a locally running Ollama service. This does not mean Meta or other infrastructure is absent: Meta/WhatsApp and HTTPS tunnel infrastructure still transport traffic between WhatsApp and the local service. The current pilot uses Cloudflare Tunnel to expose its local webhook over HTTPS. Local inference does not imply that messages remain exclusively on our device.</p>
+      </section>
+
+      <section aria-labelledby="roles">
+        <h2 id="roles">Current pilot and restaurant information</h2>
+        <p>Nekurama operates the current tests to evaluate messaging automation and simulated restaurant ordering. Messages and details you voluntarily provide are used for that test, troubleshooting, and handling your requests. Do not send real payment credentials or unnecessary sensitive information to the demo.</p>
+        <p>This notice does not cover an unlaunched production restaurant service. Before introducing production restaurant accounts or changing data uses, we will update the notice and explain the relevant restaurant and Nekurama responsibilities. A restaurant may hold independent records; contact it about those records.</p>
+      </section>
+
+      <section aria-labelledby="sharing">
+        <h2 id="sharing">Sharing and service infrastructure</h2>
+        <p>WhatsApp/Meta delivers pilot messages and related identifiers to the local service. Cloudflare Tunnel carries traffic to that service. GitHub Pages hosts the public static websites. These systems are part of delivery or hosting; local inference does not mean message traffic is kept exclusively on a local device.</p>
+        <p>These providers may process information in other countries under their own terms and privacy notices. See <a href="https://www.whatsapp.com/legal/privacy-policy">WhatsApp’s privacy policy</a>, <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare’s privacy policy</a>, and <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub’s privacy statement</a>. Privacy correspondence is also processed by the email service used to deliver it and by the Nekurama personnel handling your request. We may disclose information when required by applicable law.</p>
+      </section>
+
+      <section aria-labelledby="retention">
+        <h2 id="retention">Storage and retention</h2>
+        <p>In the restaurant ordering POC, conversation, cart, order, and preference data held in memory reset when the local service restarts. This does not mean all related data disappears: message IDs and processing statuses persist locally in a bounded collection of up to 5,000 entries, without a time-based expiry. Related copies may also exist in systems involved in message delivery or in a restaurant's separate records.</p>
+        <p>The current pilot does not automatically expire persisted processing records or technical logs after a fixed number of days. Operational records and privacy-request correspondence can remain until manually removed. We review them when handling a request or closing a test; restarting alone is not a complete erasure process. Requests to delete data handled by Nekurama are reviewed and processed manually; see the <a href="/data-deletion/">data deletion instructions</a>. Do not assume that restarting a service deletes persisted identifiers, provider records, or a restaurant's independent records.</p>
+      </section>
+
+      <section aria-labelledby="choices">
+        <h2 id="choices">Choices, requests, and updates</h2>
+        <p>You can stop messaging the pilot at any time. You may also ask us to access or correct information you provided, withdraw an optional preference, or raise a privacy concern through the contact below. If your interaction is with a restaurant, you can also contact it about information it holds. To ask Nekurama a privacy question or request deletion, use the contact details and instructions on our <a href="/data-deletion/">data deletion page</a>.</p>
+        <p>We may revise this notice when the service or its data handling changes. The date above shows when this notice was last updated. No consent is inferred simply from visiting a website or using a service.</p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span translate="no">NEKURAMA</span>
+      <a class="text-link" href="/products/">Explore our products</a>
+      <a class="text-link" href="/data-deletion/">Data deletion</a>
+    </div>
+  </footer>
+</SiteLayout>

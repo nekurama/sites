@@ -81,3 +81,16 @@ h1 { max-width: 700px; margin-bottom: 1.5rem; font-size: clamp(3.35rem, 7.3vw, 6
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* Policy pages: readable text and responsive navigation. */
+.legal-page { max-width: 860px; padding-block: 3rem; overflow-wrap: anywhere; }
+.legal-page h1 { font-size: clamp(2.5rem, 7vw, 4rem); line-height: 1.1; text-wrap: balance; }
+.legal-page h2 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; scroll-margin-top: 2rem; }
+.legal-page section { margin-top: 2.5rem; }
+.legal-page p, .legal-page li { line-height: 1.8; }
+.legal-page li + li { margin-top: .8rem; }
+.legal-page .policy-date { color: var(--muted); }
+.legal-page a { text-underline-offset: .2em; }
+.legal-page a:hover { color: var(--accent-strong); }
+.legal-page ~ .footer .footer-inner { flex-wrap: wrap; }
+@media (max-width: 600px) { .topbar:has(+ .legal-page) { flex-wrap: wrap; gap: 1rem; padding-block: 1rem; } }
