@@ -1,0 +1,53 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+
+<SiteLayout
+  title="Data deletion — Nekurama"
+  description="Instructions for requesting deletion of information handled by Nekurama's current BABAI WhatsApp pilot."
+>
+  <header class="wrap topbar">
+    <a class="wordmark" href="/" aria-label="Nekurama home" translate="no">NEKURAMA</a>
+    <nav aria-label="Main navigation">
+      <a href="/">Company</a>
+      <a href="/products/">Products</a>
+      <a href="/privacy/">Privacy</a>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap legal-page">
+    <article>
+      <p class="eyebrow">Privacy requests</p>
+      <h1>Data deletion instructions</h1>
+      <p class="lede">Nekurama's current BABAI WhatsApp integrations are local test and pilot POCs, not a generally available production service.</p>
+      <p class="policy-date">Last updated: 26 October 2026</p>
+
+      <section aria-labelledby="request">
+        <h2 id="request">How to make a request</h2>
+        <p>Email <a href="mailto:facebook.babai@nekurama.com">facebook.babai@nekurama.com</a> with the subject “Privacy or data deletion request”. Requests are reviewed and handled manually for information Nekurama can locate and control.</p>
+        <p>Include only the minimum information needed to help identify the relevant interaction, such as the WhatsApp phone number used in the pilot, the participating restaurant or pilot (if relevant), and an approximate conversation date. Do not send passwords, access tokens, identity documents, payment credentials, or unrelated sensitive information.</p>
+        <p>We may ask for limited additional context to verify that the request concerns your data and locate the right records. We will respond with the outcome or explain any information still needed. There is no automatic deletion tool in the current pilot.</p>
+      </section>
+
+      <section aria-labelledby="what-happens">
+        <h2 id="what-happens">What the current POC stores</h2>
+        <p>In the restaurant ordering POC, conversation, cart, order, and preference data are held in memory and reset when the local service restarts. Message IDs and processing statuses persist locally in a bounded collection of up to 5,000 entries with no time-based expiry. A restart is not a deletion request and does not by itself delete those persisted identifiers or copies held elsewhere.</p>
+        <p>We review requests manually and determine what relevant data is present in systems we can access and control. After verifying the request, we will remove relevant data we control where applicable, or explain any retention required by law and any technical limits. For example, a message ID may not be traceable from a phone number alone after conversation context has cleared. We may ask for a message reference or approximate time rather than collect unrelated identity information. Meta/WhatsApp, tunnel or hosting infrastructure, and a restaurant may hold separate records under their own processes; contact the relevant provider or restaurant about records it holds independently.</p>
+      </section>
+
+      <section aria-labelledby="result">
+        <h2 id="result">What to expect</h2>
+        <p>We will review the request and may contact you using the email address from which you wrote if limited clarification is necessary. Please do not include more personal information than needed. This page does not describe privacy controls or automated deletion features that are not implemented in the current pilot.</p>
+        <p>For more context about the current scope and data handling, read the <a href="/privacy/">privacy notice</a>.</p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span translate="no">NEKURAMA</span>
+      <a class="text-link" href="/privacy/">Privacy notice</a>
+      <a class="text-link" href="/">About the company</a>
+    </div>
+  </footer>
+</SiteLayout>

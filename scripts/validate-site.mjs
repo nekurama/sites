@@ -6,6 +6,8 @@ const repositoryDirectory = fileURLToPath(new URL('../', import.meta.url));
 const outputDirectory = path.join(repositoryDirectory, 'dist');
 const pages = [
   'index.html',
+  'privacy/index.html',
+  'data-deletion/index.html',
   'products/babai/index.html',
   'products/babai/finance/index.html',
   'ideology/sdlc/index.html',
